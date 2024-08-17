@@ -24,7 +24,7 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       username: ['emilys', [Validators.required]], // Username with a default value and required validation
       password: ['emilyspass', [Validators.required]], // Password with a default value and required validation
-      // note : I setted this default value for the username and password which i got from the API documentation to can login
+      // note : I set this default value for the username and password which i got from the API documentation to can login
     });
   }
 
