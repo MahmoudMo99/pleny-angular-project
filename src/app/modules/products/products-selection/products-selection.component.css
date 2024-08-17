@@ -1,0 +1,122 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  padding: 15px 80px;
+}
+
+.sidebar {
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  height: 50em;
+}
+/* Hide the default radio button */
+input[type="radio"] {
+  display: none;
+}
+
+/* Create a custom radio button */
+.custom-radio {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.custom-radio input[type="radio"] + .radio-label {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+/* Style the radio button */
+.custom-radio .radio-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--mainColor);
+  background-color: #fff;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Style the checked state */
+.custom-radio input[type="radio"]:checked + .radio-label::before {
+  background-color: rgba(65, 204, 204, 1);
+  border-color: rgba(65, 204, 204, 1);
+}
+
+.custom-radio input[type="radio"]:checked + .radio-label::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.custom-radio span {
+  padding-left: 10px;
+}
+
+form p {
+  color: black !important;
+  font-weight: 600;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
+
+/* Content (app-products) styles */
+.content {
+  background-color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar,
+  .content {
+    margin-bottom: 20px;
+  }
+}
+
+.sidebar form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar input[type="radio"] {
+  margin-right: 0.5em;
+}
+
+.sidebar label {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.breadcrumb {
+  font-size: 18px;
+  padding: 20px 80px;
+  font-weight: 500;
+}
+
+.breadcrumb .selectedCategory {
+  padding-bottom: 10px;
+}
+
+.breadcrumb span:not(:last-child)::after {
+  content: " / ";
+}

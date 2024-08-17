@@ -1,0 +1,138 @@
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1em;
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+  height: 42em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+  border-radius: 4px;
+  background-color: #f7e3da;
+  height: 20em;
+}
+
+.image-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.button-container button {
+  background-color: var(--mainColor);
+  border-radius: 3px;
+  padding: 10px;
+  border: 1px solid var(--mainColor);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  width: 20em;
+  margin-top: 25px;
+}
+
+.button-container button.in-cart {
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.button-container button:hover {
+  opacity: 0.8;
+}
+.sale-container {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 5em;
+  padding: 2px 10px;
+  background-color: var(--mainColor);
+  font-size: 18px;
+  border-radius: 4px;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-content h3,
+.card-content .price-content {
+  padding-bottom: 16px;
+}
+.description-container {
+  overflow: hidden;
+}
+.description-container .description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px !important;
+  padding-bottom: 16px;
+  color: rgba(52, 64, 84, 1);
+}
+
+.card-content .price-content span {
+  padding-left: 16px;
+}
+
+.card-details p {
+  color: rgba(52, 64, 84, 1);
+  padding-bottom: 16px;
+}
+
+.card-details span {
+  color: black;
+}
+
+.rating-container {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  color: orange;
+  margin-right: 5px;
+}
+
+.rating-container .review-count {
+  color: rgba(52, 64, 84, 1);
+}
+
+.rating-container span {
+  padding-right: 3px;
+}
+
+.pagination {
+  margin: 110px 0;
+  text-align: center;
+}
+
+.pagination button {
+  width: 2em;
+  height: 2em;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.prev-button,
+.next-button {
+  width: 5em !important;
+}
+
+.pagination button,
+.pagination span {
+  margin: 0 3px;
+}
+
+.pagination button.active {
+  font-weight: bold;
+  background-color: var(--mainColor);
+  border-radius: 4px;
+}

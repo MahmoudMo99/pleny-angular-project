@@ -1,0 +1,78 @@
+<div class="products-container">
+  <div class="product-list">
+
+    <div *ngFor="let product of products" class="product-item">
+
+      <div class="image-container">
+        <img src="{{product.images[0]}}" alt="Not Found Image">
+      </div>
+
+      <div class="card-content">
+        <h3>{{ product.title }}</h3>
+        <div class="description-container">
+          <p class="description">{{ product.description }}</p>
+        </div>
+
+        <div class="price-content">
+          <del>{{ product.price | currency }}</del>
+          <span>{{ calculateActualPrice(product.price, product.discountPercentage) | currency }}</span>
+        </div>
+
+        <div class="card-details">
+          <p>Brand : <span>{{product.brand}}</span></p>
+          <p>Category : <span>{{product.category}}</span></p>
+          <p>In Stock : <span>{{product.stock}}</span></p>
+        </div>
+
+        <div class="rating-container">
+          <p>
+            <span>★</span>{{product.rating}} <span class="review-count">({{product.reviews.length}})</span>
+          </p>
+        </div>
+
+        <div class="button-container">
+          <button type="button" (click)="isInCart(product.id) ? removeFromCart(product.id) : addToCart(product.id)"
+            [ngClass]="{'in-cart': isInCart(product.id)}">
+            {{ isInCart(product.id) ? 'REMOVE FROM CART' : 'ADD TO CART' }}
+          </button>
+        </div>
+
+        <div class="sale-container">
+          <p>- {{product.discountPercentage}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="pagination">
+    <button (click)="onPageChange(1)" [disabled]="currentPage === 1">
+      &lt;
+    </button>
+
+    <button class="prev-button" (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">
+      Previous
+    </button>
+
+    <ng-container *ngIf="getPaginationPages().length > 0">
+      <ng-container *ngIf="currentPage > 4">
+        <span>...</span>
+      </ng-container>
+      <button *ngFor="let page of getPaginationPages()" (click)="onPageChange(page)"
+        [class.active]="currentPage === page">
+        {{ page }}
+      </button>
+      <ng-container *ngIf="totalPages > currentPage + 3">
+        <span>...</span>
+      </ng-container>
+    </ng-container>
+
+    <button class="next-button" (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">
+      Next
+    </button>
+
+    <button (click)="onPageChange(totalPages)" [disabled]="currentPage === totalPages">
+      &gt;
+    </button>
+  </div>
+</div>

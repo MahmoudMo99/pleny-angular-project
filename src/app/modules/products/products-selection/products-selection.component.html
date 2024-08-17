@@ -1,0 +1,46 @@
+<div class="products-selection">
+
+  <div class="breadcrumb">
+
+    <p class="selectedCategory">{{selectedCategory}}</p>
+
+    <span *ngFor="let crumb of breadcrumb; let last = last">
+      <ng-container *ngIf="!last">
+        {{ crumb }}
+      </ng-container>
+      <ng-container *ngIf="last">
+        {{ crumb }}
+      </ng-container>
+    </span>
+  </div>
+
+  <div class="grid-container">
+
+
+    <div class="sidebar">
+      <form>
+        <p>Products</p>
+        <div class="custom-radio">
+          <input type="radio" id="all" name="category" value="All" [(ngModel)]="selectedCategory"
+            (change)="onCategoryChange()" />
+          <label for="all" class="radio-label">All</label>
+          <span>({{totalProductsCount}})</span>
+        </div>
+        <div *ngFor="let category of categories" class="custom-radio">
+          <input type="radio" [id]="category" [name]="category" [value]="category" [(ngModel)]="selectedCategory"
+            (change)="onCategoryChange()" />
+          <label [for]="category" class="radio-label">
+            {{ category }}
+          </label>
+          <span>({{ categoryProductsCount[category] || 0 }})</span>
+        </div>
+      </form>
+    </div>
+
+
+
+    <div class="content">
+      <app-products [selectedCategory]="selectedCategory"></app-products>
+    </div>
+  </div>
+</div>

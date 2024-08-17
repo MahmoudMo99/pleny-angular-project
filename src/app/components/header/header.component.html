@@ -1,0 +1,36 @@
+<!-- header.component.html -->
+<header>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <div class="navbar-brand">
+        <div class="logo-icon"></div>
+        <span class="logo-text">ClickTik</span>
+      </div>
+      <ul class="navbar-links">
+        <li><a routerLinkActive="active" [routerLink]="['/products']">Home</a></li>
+      </ul>
+    </div>
+    <div class="navbar-right">
+      <div class="search-container" *ngIf="isAuthenticated">
+        <input type="text" placeholder="Search" (input)="onSearchInput($event)" />
+        <i class="search-icon"></i>
+      </div>
+      <div class="cart-container" *ngIf="isAuthenticated">
+        <i class="cart-icon"><img src="/assets/cart.png" alt=""></i>
+        <span class="notification-badge">{{ cartItemCount }}</span>
+      </div>
+      <ul class="navbar-links">
+        <li *ngIf="isAuthenticated">
+          <a routerLinkActive="active" [routerLink]="">Account</a>
+        </li>
+        <li *ngIf="!isAuthenticated">
+          <a routerLinkActive="active" [routerLink]="['/login']">Log in</a>
+        </li>
+        <li *ngIf="isAuthenticated">
+          <a class="logout" (click)="logout()">Log out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<hr>
