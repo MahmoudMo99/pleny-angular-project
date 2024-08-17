@@ -9,9 +9,10 @@ import { AuthModule } from './modules/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './components/alert/alert.component';
+import { MainLayoutComponent } from './components/main-layout/main-layout.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, AlertComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, AlertComponent, MainLayoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
