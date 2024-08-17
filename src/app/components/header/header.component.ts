@@ -1,4 +1,3 @@
-// header.component.ts
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -11,33 +10,37 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  isAuthenticated: boolean = false;
-  cartItemCount: number = 0;
+  isAuthenticated: boolean = false; // Boolean to track the authentication status
+  cartItemsCount: number = 0; // Variable to hold the number of items in the cart
 
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private searchService: SearchService, // Inject the SearchService
-    private cartService: CartService
+    private authService: AuthService, // Inject AuthService for handling authentication
+    private router: Router, // Inject Router for navigation
+    private searchService: SearchService, // Inject SearchService for search functionality
+    private cartService: CartService // Inject CartService for cart management
   ) {}
 
   ngOnInit(): void {
+    // Subscribe to the authentication status
     this.authService.isAuthenticated().subscribe((authStatus) => {
-      this.isAuthenticated = authStatus;
+      this.isAuthenticated = authStatus; // Update the authentication status
     });
 
-    this.cartService.cartItemCount$.subscribe((count) => {
-      this.cartItemCount = count;
+    // Subscribe to the cart items count observable
+    this.cartService.cartItemsCount$.subscribe((count) => {
+      this.cartItemsCount = count; // Update the cart items count
     });
   }
 
+  // Method to handle user logout
   logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']);
+    this.authService.logout(); // Call logout method from AuthService
+    this.router.navigate(['/login']); // Navigate to the login page
   }
 
+  // Method to handle search input changes
   onSearchInput(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.searchService.updateSearchTerm(target.value); // Use SearchService to update the search term
+    const target = event.target as HTMLInputElement; // Get the input element from the event
+    this.searchService.updateSearchTerm(target.value); // Update the search term using SearchService
   }
 }
