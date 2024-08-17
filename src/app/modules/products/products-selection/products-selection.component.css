@@ -12,6 +12,7 @@
   height: 50em;
 }
 /* Hide the default radio button */
+/* as i want to create a new radio button with a specific style */
 input[type="radio"] {
   display: none;
 }
@@ -49,8 +50,8 @@ input[type="radio"] {
 
 /* Style the checked state */
 .custom-radio input[type="radio"]:checked + .radio-label::before {
-  background-color: rgba(65, 204, 204, 1);
-  border-color: rgba(65, 204, 204, 1);
+  background-color: var(--mainColor);
+  border-color: var(--mainColor);
 }
 
 .custom-radio input[type="radio"]:checked + .radio-label::after {
